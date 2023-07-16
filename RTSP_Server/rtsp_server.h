@@ -14,14 +14,25 @@ private:
   std::mutex mutex;
   std::mutex rtspMutex;
   std::string videosource;
+  std::atomic_bool isWorking = true;
+  cv::Mat frame;
+  std::string rtsp_frame_data;
+
+
 
 private:
+  std::thread capture_thread;
+  std::thread camera_frame_encode;
+
   std::thread rtspsvrThread;
   std::thread rtspSendFrameThread;
 
 public:
 
   void run();
+
+  void encoding();
+
 
   void startRtspServer();
 
