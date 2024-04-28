@@ -33,7 +33,6 @@ public:
 
   void encoding();
 
-
   void startRtspServer();
 
   void sendFrameThread(xop::RtspServer* rtsp_server, xop::MediaSessionId session_id);
